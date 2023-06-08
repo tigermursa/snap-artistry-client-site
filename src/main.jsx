@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Layout from "./Components/Layout/Layout.jsx";
 import Home from "./Components/Home/Home.jsx";
+import FourOhFour from "./Components/FourOhFour/FourOhFour.jsx";
+import Login from "./Components/Login/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +17,15 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
     ],
+  },
+  {
+    path: "/*",
+    element: <FourOhFour></FourOhFour>,
   },
 ]);
 
