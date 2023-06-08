@@ -10,7 +10,7 @@ import cphoto5 from "../../../../public/cphoto5.jpeg";
 import "./HomeSlider.css"
 const HomeSlider = () => {
   const settings = {
-    dots: true,
+    dots: " ",
     infinite: true,
     speed: 500,
     slidesToShow: 1,

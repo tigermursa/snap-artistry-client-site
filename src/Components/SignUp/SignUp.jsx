@@ -44,7 +44,17 @@ const SignUp = () => {
       setLoading(false);
       return;
     }
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setError("Password must contain at least one capital letter!");
+      setLoading(false);
+      return;
+    }
 
+    if (!/[!@#$%^&*]/.test(password)) {
+      setError("Password must contain at least one special character!");
+      setLoading(false);
+      return;
+    }
     if (password !== confirm) {
       setError("Password did not match!");
       setLoading(false);
@@ -229,7 +239,10 @@ const SignUp = () => {
             </form>
             <div className="login">Or login with</div>
             <div className="links">
-              <button onClick={handleGoogleSignIn} className="google rounded-full">
+              <button
+                onClick={handleGoogleSignIn}
+                className="google rounded-full"
+              >
                 <FaGoogle className="me-1 "></FaGoogle>
                 <span>Google</span>
               </button>

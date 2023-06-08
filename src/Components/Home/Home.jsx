@@ -4,7 +4,7 @@ import HomeSlider from "./HomeSlider/HomeSlider";
 const Home = () => {
   return (
     <div>
-      <div>
+      <div className="">
         <HomeSlider></HomeSlider>
       </div>
     </div>

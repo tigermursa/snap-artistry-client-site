@@ -6,10 +6,22 @@
 
 .slider-image {
   width: 100%;
-  height: 650px;
-  object-fit: initial;
+  height: 350px;
+  object-fit: cover;
 }
 
 .mySlider {
   width: 100%;
+}
+
+/* Responsive zone */
+@media (max-width: 480px) {
+  .slider-image {
+    width: 100%;
+    height: 150px;
+    object-fit: initial;
+  }
+  .mySlider {
+    width: 100%;
+  }
 }
