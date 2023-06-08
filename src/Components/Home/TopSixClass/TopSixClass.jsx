@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Classes = () => {
+const TopSixClass = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -9,11 +9,17 @@ const Classes = () => {
       .then((data) => setData(data));
   }, []);
 
+  // Sort the data array based on classEnrolled in descending order
+  const sortedData = [...data].sort((a, b) => b.classEnrolled - a.classEnrolled);
+
+  // Slice the sortedData array to show only the top 6 entries
+  const slicedData = sortedData.slice(0, 6);
+
   return (
     <div>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {data.map((instructor, index) => (
+          {slicedData.map((instructor, index) => (
             <div
               key={index}
               className={`bg-white shadow-md rounded-lg p-4 ${
@@ -25,10 +31,12 @@ const Classes = () => {
                 alt={instructor.classImage}
                 className="w-full h-80 object-cover rounded-lg"
               />
-              <div className={`mt-4 ${instructor.availableSeats === 0 ? "text-white" : "text-black"}`}>
-                <p className="text-lg font-semibold">
-                  {instructor.className}
-                </p>
+              <div
+                className={`mt-4 ${
+                  instructor.availableSeats === 0 ? "text-white" : "text-black"
+                }`}
+              >
+                <p className="text-lg font-semibold">{instructor.className}</p>
                 <p className="text-gray-500">
                   Instructor: {instructor.instructorName}
                 </p>
@@ -39,7 +47,9 @@ const Classes = () => {
               </div>
               <button
                 className={`mt-4 bg-purple-500 text-white px-4 py-2 rounded-lg ${
-                  instructor.availableSeats === 0 ? "opacity-50 cursor-not-allowed" : ""
+                  instructor.availableSeats === 0
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
                 }`}
                 disabled={instructor.availableSeats === 0}
               >
@@ -53,4 +63,4 @@ const Classes = () => {
   );
 };
 
-export default Classes;
+export default TopSixClass;
