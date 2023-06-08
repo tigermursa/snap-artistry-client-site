@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
@@ -24,16 +25,18 @@ const SignUp = () => {
   const [userPhoto, setUserPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
   const [photoUrl, setPhotoUrl] = useState(null);
-console.log(photoUrl);
+  console.log(photoUrl);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   // THE MAIN FUNCTION OF SUBMIT FORM .......................................................
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const onSubmit = async (data) => {
     setLoading(true);
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    const confirm = form.confirm.value;
-    const username = form.username.value;
+    const { email, password, confirm, username, gender, phone, address } = data;
     setError("");
 
     if (password.length < 6) {
@@ -51,9 +54,8 @@ console.log(photoUrl);
     setLoading(true);
     try {
       const url = await uploadImageToStorage();
-      await createUser(email, password, username, url);
+      await createUser(email, password, username, url, gender, phone, address);
       setLoading(false);
-      form.reset();
       navigate(from) || "/login";
       setPhotoUrl(null);
     } catch (error) {
@@ -107,7 +109,7 @@ console.log(photoUrl);
           <div className="content rounded-md">
             <header>Sign up Form</header>
             <h1 className="text-red-600 font-bold mb-10 text-2xl ">{error}</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="field mb-4 rounded-full">
                 <span className="fa fa-user"></span>
                 <input
@@ -115,7 +117,11 @@ console.log(photoUrl);
                   name="username"
                   required
                   placeholder="Username"
+                  {...register("username", { required: true })}
                 />
+                {errors.username && (
+                  <span className="text-red-600">Username is required</span>
+                )}
               </div>
               <div className="field mb-4 p-2 rounded-full">
                 <div>
@@ -133,7 +139,50 @@ console.log(photoUrl);
                   name="email"
                   required
                   placeholder="Email or Phone"
+                  {...register("email", { required: true })}
                 />
+                {errors.email && (
+                  <span className="text-red-600">Email is required</span>
+                )}
+              </div>
+              <div className="field rounded-full">
+                <span className="fa fa-user"></span>
+                <input
+                  type="text"
+                  name="gender"
+                  required
+                  placeholder="Gender"
+                  {...register("gender", { required: true })}
+                />
+                {errors.gender && (
+                  <span className="text-red-600">Gender is required</span>
+                )}
+              </div>
+              <div className="field rounded-full">
+                <span className="fa fa-user"></span>
+                <input
+                  type="text"
+                  name="phone"
+                  required
+                  placeholder="Phone Number"
+                  {...register("phone", { required: true })}
+                />
+                {errors.phone && (
+                  <span className="text-red-600">Phone Number is required</span>
+                )}
+              </div>
+              <div className="field rounded-full">
+                <span className="fa fa-user"></span>
+                <input
+                  type="text"
+                  name="address"
+                  required
+                  placeholder="Address"
+                  {...register("address", { required: true })}
+                />
+                {errors.address && (
+                  <span className="text-red-600">Address is required</span>
+                )}
               </div>
               <div className="field space rounded-full">
                 <span className="fa fa-lock"></span>
@@ -143,7 +192,11 @@ console.log(photoUrl);
                   name="password"
                   required
                   placeholder="Password"
+                  {...register("password", { required: true })}
                 />
+                {errors.password && (
+                  <span className="text-red-600">Password is required</span>
+                )}
                 <span className="show" onClick={togglePasswordVisibility}>
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
@@ -156,7 +209,13 @@ console.log(photoUrl);
                   name="confirm"
                   required
                   placeholder="Confirm Password"
+                  {...register("confirm", { required: true })}
                 />
+                {errors.confirm && (
+                  <span className="text-red-600">
+                    Confirm Password is required
+                  </span>
+                )}
                 <span className="show" onClick={togglePasswordVisibility}>
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>

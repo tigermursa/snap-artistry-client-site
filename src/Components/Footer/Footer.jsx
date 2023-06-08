@@ -6,16 +6,18 @@ const Footer = () => {
   return (
     <div>
       <footer className="footer p-10 bg-purple-950 text-base-content rounded-md">
-        <div>
+        <div >
           <img
             className="w-16 rounded-full"
             src="https://e0.pxfuel.com/wallpapers/590/423/desktop-wallpaper-lens-transparent-background-camera-lens-logo-design-png.jpg"
             alt="Snap Artistry Logo"
           />
-          <p>
+          <p className="text-start">
             Snap Artistry
             <br />
             Capturing moments since 20XX
+            <br />
+            &copy; copyright 2023
           </p>
         </div>
         <div>

@@ -1,0 +1,15 @@
+.slider-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-image {
+  width: 100%;
+  height: 650px;
+  object-fit: initial;
+}
+
+.mySlider {
+  width: 100%;
+}

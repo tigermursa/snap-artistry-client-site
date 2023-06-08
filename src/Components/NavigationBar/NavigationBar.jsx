@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import "./NavigationBar.css";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaUserAlt } from "react-icons/fa";
-const NavigationBar = () => {
+const NavigationBar = ({button}) => {
   const [activeItem, setActiveItem] = useState(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { signOutUser, user } = useContext(AuthContext);
@@ -31,6 +31,7 @@ const NavigationBar = () => {
             <NavLink to="/">
               {" "}
               <div className="flex-shrink-0 flex  ">
+             
                 <img
                   className="w-8  rounded-full me-2"
                   src="https://e0.pxfuel.com/wallpapers/590/423/desktop-wallpaper-lens-transparent-background-camera-lens-logo-design-png.jpg"
@@ -147,6 +148,7 @@ const NavigationBar = () => {
                 </button>
               )}
             </NavLink>
+            {button && <li>{button}</li>}
           </div>
           <div className="flex md:hidden justify-center items-center">
             <div className="me-2 ">
