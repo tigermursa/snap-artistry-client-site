@@ -104,11 +104,11 @@ console.log(photoUrl);
         </div>
       ) : (
         <div className="bg-img">
-          <div className="content">
+          <div className="content rounded-md">
             <header>Sign up Form</header>
             <h1 className="text-red-600 font-bold mb-10 text-2xl ">{error}</h1>
             <form onSubmit={handleSubmit}>
-              <div className="field mb-4">
+              <div className="field mb-4 rounded-full">
                 <span className="fa fa-user"></span>
                 <input
                   type="text"
@@ -117,7 +117,7 @@ console.log(photoUrl);
                   placeholder="Username"
                 />
               </div>
-              <div className="field mb-4 p-2">
+              <div className="field mb-4 p-2 rounded-full">
                 <div>
                   <input
                     type="file"
@@ -126,7 +126,7 @@ console.log(photoUrl);
                   />
                 </div>
               </div>
-              <div className="field">
+              <div className="field rounded-full">
                 <span className="fa fa-user"></span>
                 <input
                   type="text"
@@ -135,7 +135,7 @@ console.log(photoUrl);
                   placeholder="Email or Phone"
                 />
               </div>
-              <div className="field space">
+              <div className="field space rounded-full">
                 <span className="fa fa-lock"></span>
                 <input
                   type={showPassword ? "text" : "password"}
@@ -148,7 +148,7 @@ console.log(photoUrl);
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
-              <div className="field space">
+              <div className="field space rounded-full">
                 <span className="fa fa-lock"></span>
                 <input
                   type={showPassword ? "text" : "password"}
@@ -164,14 +164,14 @@ console.log(photoUrl);
               <div className="pass text-white hidden">
                 <p>Forgot Password?</p>
               </div>
-              <button className="field mt-5">
-                <input type="submit" value="SIGN UP" />
+              <button className="field mt-5 rounded-full">
+                <input className="rounded-full" type="submit" value="SIGN UP" />
               </button>
             </form>
             <div className="login">Or login with</div>
             <div className="links">
-              <button onClick={handleGoogleSignIn} className="google">
-                <FaGoogle className="me-1"></FaGoogle>
+              <button onClick={handleGoogleSignIn} className="google rounded-full">
+                <FaGoogle className="me-1 "></FaGoogle>
                 <span>Google</span>
               </button>
             </div>

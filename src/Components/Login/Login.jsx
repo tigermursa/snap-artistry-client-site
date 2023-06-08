@@ -60,13 +60,13 @@ const LogIn = () => {
   };
 
   return (
-    <div className="mt-0">
+    <div className="mt-0 ">
       <div className="bg-img">
-        <div className="content">
+        <div className="content rounded-xl">
           <header>Login Form</header>
           <h1 className="text-red-600 font-bold mb-10 text-2xl ">{error}</h1>
           <form onSubmit={handleSignInForm}>
-            <div className="field">
+            <div className="field rounded-full">
               <span className="fa fa-user"></span>
               <input
                 type="text"
@@ -75,11 +75,11 @@ const LogIn = () => {
                 placeholder="Email or Phone"
               />
             </div>
-            <div className="field space">
+            <div className="field space rounded-full">
               <span className="fa fa-lock"></span>
               <input
                 type={showPassword ? "text" : "password"}
-                className="pass-key"
+                className="pass-key "
                 name="password"
                 required
                 placeholder="Password"
@@ -91,13 +91,13 @@ const LogIn = () => {
             <div className="pass">
               <p className="text-white">Forgot Password?</p>
             </div>
-            <div className="field">
-              <input type="submit" value="LOGIN" />
+            <div className="field rounded-full ">
+              <input className="rounded-full" type="submit" value="LOGIN" />
             </div>
           </form>
           <div className="login">Or login with</div>
           <div className="links">
-            <button onClick={handleGoogleSignIn} className="google">
+            <button onClick={handleGoogleSignIn} className="google rounded-full">
               <FaGoogle className="me-1"></FaGoogle>
               <span>Google</span>
             </button>
