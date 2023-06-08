@@ -1,5 +1,6 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import { AiOutlineHome } from "react-icons/ai";
 
 const FourOhFour = () => {
   return (
@@ -16,6 +17,9 @@ const FourOhFour = () => {
         The page you are looking for might have been removed or temporarily
         unavailable.
       </p>
+      <Link to="/" className="bg-purple-500 text-white py-2 px-4 mt-4 rounded-md">
+        <AiOutlineHome className="inline-block mr-2" /> Back to Home
+      </Link>
     </div>
   );
 };

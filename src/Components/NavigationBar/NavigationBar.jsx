@@ -1,80 +1,276 @@
-import React from "react";
-
+import React, { useContext, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import "./NavigationBar.css";
+import { AuthContext } from "../Provider/AuthProvider";
+import { FaUserAlt } from "react-icons/fa";
 const NavigationBar = () => {
+  const [activeItem, setActiveItem] = useState(null);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { signOutUser, user } = useContext(AuthContext);
+  const handleItemClick = (itemName) => {
+    setActiveItem(itemName);
+    setMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const signOutHandler = () => {
+    signOutUser()
+      .then((result) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
-    <div>
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
+    <nav className="bg-purple-950 mt-5 rounded-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <NavLink to="/">
+              {" "}
+              <div className="flex-shrink-0 flex  ">
+                <img
+                  className="w-8  rounded-full me-2"
+                  src="https://e0.pxfuel.com/wallpapers/590/423/desktop-wallpaper-lens-transparent-background-camera-lens-logo-design-png.jpg"
+                  alt=""
                 />
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
-            </ul>
+                <p className="text-2xl font-bold text-white"> Snap Artistry</p>
+              </div>
+            </NavLink>
+           
           </div>
-          <a className="btn btn-ghost normal-case text-xl font-bold">Snap Artistry</a>
+          <div className="flex items-center">
+          <div className="hidden md:flex md:items-center ml-4">
+              <NavLink
+                exact="true"
+                to="/"
+                onClick={() => handleItemClick("home")}
+                className={`text-gray-300 hover:text-white px-3 py-2 rounded-full text-sm font-medium ${
+                  activeItem === "home" ? "activeNavItem" : ""
+                }`}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/instructors"
+                onClick={() => handleItemClick("instructors")}
+                className={`text-gray-300 hover:text-white px-3 py-2 rounded-full text-sm font-medium ${
+                  activeItem === "instructors" ? "activeNavItem" : ""
+                }`}
+              >
+                Instructors
+              </NavLink>
+              <NavLink
+                to="/classes"
+                onClick={() => handleItemClick("classes")}
+                className={`text-gray-300 hover:text-white px-3 py-2 rounded-full text-sm font-medium ${
+                  activeItem === "classes" ? "activeNavItem" : ""
+                }`}
+              >
+                Classes
+              </NavLink>
+              {user ? (
+                <div>
+                  <NavLink
+                    to="/dashboards"
+                    onClick={() => handleItemClick("dashboards")}
+                    className={`text-gray-300 hover:text-white px-3 py-2 rounded-full text-sm font-medium ${
+                      activeItem === "dashboards" ? "activeNavItem" : ""
+                    }`}
+                  >
+                    Dashboard
+                  </NavLink>
+                </div>
+              ) : (
+                <div></div>
+              )}
+
+              <NavLink
+                to="/blogs"
+                onClick={() => handleItemClick("blogs")}
+                className={`text-gray-300 hover:text-white hidden px-3 py-2 rounded-md text-sm font-medium ${
+                  activeItem === "blogs" ? "activeNavItem" : ""
+                }`}
+              >
+                Blogs
+              </NavLink>
+              <NavLink
+                to="/blo"
+                onClick={() => handleItemClick("for")}
+                className={`text-gray-300 hover:text-white  px-3 py-2 rounded-md text-sm mr-5 font-medium ${
+                  activeItem === "for" ? "activeNavItem" : ""
+                }`}
+              >
+                404
+              </NavLink>
+            </div>
+            <div className="hidden md:block">
+              <NavLink>
+                {user ? (
+                  <img
+                    className=" profile-pic"
+                    title={user.displayName}
+                    src={user.photoURL}
+                    alt=""
+                  />
+                ) : (
+                  <p
+                    className="text-2xl rounded-full 
+              "
+                  >
+                    <FaUserAlt />
+                  </p>
+                )}
+              </NavLink>
+            </div>
+
+            {/* New login nav item */}
+            <NavLink to="/login" onClick={() => handleItemClick("login")}>
+              {user ? (
+                <button
+                  onClick={signOutHandler}
+                  className={`text-gray-300 hover:text-white hidden md:block px-3 py-2 ms-3  d rounded-full text-sm font-medium ${
+                    activeItem === "login" ? "activeNavItem" : ""
+                  }`}
+                >
+                  Log Out
+                </button>
+              ) : (
+                <button
+                  className={`text-gray-300 hover:text-white  hidden md:block px-3 py-2 ms-3  rounded-full text-sm font-medium ${
+                    activeItem === "login" ? "activeNavItem" : ""
+                  }`}
+                >
+                  Log In
+                </button>
+              )}
+            </NavLink>
+          </div>
+          <div className="flex md:hidden justify-center items-center">
+            <div className="me-2 ">
+              <NavLink>
+                {user ? (
+                  <img
+                    className=" profile-pic"
+                    title={user.displayName}
+                    src={user.photoURL}
+                    alt=""
+                  />
+                ) : (
+                  <p
+                    className="text-2xl rounded-full 
+              "
+                  >
+                    <FaUserAlt />
+                  </p>
+                )}
+              </NavLink>
+            </div>
+            <button
+              onClick={toggleMobileMenu}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMobileMenuOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12"></path>
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16"></path>
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li tabIndex={0}>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
-        </div>
-        <div className="navbar-end hidden">
-          <a className="btn">Button</a>
-        </div>
+        {isMobileMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 ">
+              <NavLink
+                exact="true"
+                to="/"
+                onClick={() => handleItemClick("home")}
+                className={`text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${
+                  activeItem === "home" ? "activeNavItem" : ""
+                }`}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/instructors"
+                onClick={() => handleItemClick("instructors")}
+                className={`text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${
+                  activeItem === "instructors" ? "activeNavItem" : ""
+                }`}
+              >
+                Instructors
+              </NavLink>
+              <NavLink
+                to="/classes"
+                onClick={() => handleItemClick("classes")}
+                className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
+                  activeItem === "classes" ? "activeNavItem" : ""
+                }`}
+              >
+                Classes
+              </NavLink>
+              {user ? (
+                <div className="flex flex-col">
+                  <NavLink
+                    to="/dashboards"
+                    onClick={() => handleItemClick("dashboards")}
+                    className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium ${
+                      activeItem === "dashboards" ? "activeNavItem" : ""
+                    }`}
+                  >
+                    Dashboard
+                  </NavLink>
+                </div>
+              ) : (
+                <div></div>
+              )}
+              <NavLink
+                to="/blogs"
+                onClick={() => handleItemClick("blogs")}
+                className={`text-gray-300 hover:text-white hidden block px-3 py-2 rounded-md text-base font-medium ${
+                  activeItem === "blogs" ? "activeNavItem" : ""
+                }`}
+              >
+                Blogs
+              </NavLink>
+              {/* New login nav item */}
+              <NavLink to="/login" onClick={() => handleItemClick("login")}>
+                {user ? (
+                  <button
+                    onClick={signOutHandler}
+                    className={`text-gray-300 hover:text-white  px-3 py-2 md:ms-5 d rounded-md text-sm font-medium ${
+                      activeItem === "login" ? "activeNavItem" : ""
+                    }`}
+                  >
+                    Log Out
+                  </button>
+                ) : (
+                  <button
+                    className={`text-gray-300 hover:text-white   px-3 py-2 md:ms-5 rounded-md text-sm font-medium ${
+                      activeItem === "login" ? "activeNavItem" : ""
+                    }`}
+                  >
+                    Log In
+                  </button>
+                )}
+              </NavLink>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </nav>
   );
 };
 
