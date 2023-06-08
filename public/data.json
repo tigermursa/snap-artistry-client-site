@@ -1,0 +1,179 @@
+[
+  {
+    "className": "Introduction to Photography",
+    "classImage": "https://www.thesprucecrafts.com/thmb/Q1RLk1zMtF2YswaCkXoIEtrpX4I=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/introduction-to-photography-tips-for-beginners-2688546-hero-3617237b296e4832ad04bbf107f1f6b3.jpg",
+    "classEnrolled": 25,
+    "instructorName": "John Smith",
+    "instructorImage": "https://www.hawkmountain.org/data/uploads/media/image/David-Greaves-photography-class.jpg?w=1024",
+    "price": 99.99,
+    "totalClassesTaken": 8,
+    "availableSeats": 10,
+    "email": "john.smith@example.com"
+  },
+  {
+    "className": "Portrait Photography",
+    "classImage": "https://www.adorama.com/alc/wp-content/uploads/2017/06/1-shutterstock_588634790.jpg",
+    "classEnrolled": 20,
+    "instructorName": "Emily Johnson",
+    "instructorImage": "https://cdn11.bigcommerce.com/s-yn8q9n4bvw/content/education/become-an-instructor/img-certification-rockstar@2x.jpg",
+    "price": 149.99,
+    "totalClassesTaken": 12,
+    "availableSeats": 5,
+    "email": "emily.johnson@example.com"
+  },
+  {
+    "className": "Landscape Photography",
+    "classImage": "https://artisanhd.com/wp-content/uploads/2018/08/landscape-photography-blog-main-artisanhd.jpg",
+    "classEnrolled": 15,
+    "instructorName": "Michael Davis",
+    "instructorImage": "https://d2gg9evh47fn9z.cloudfront.net/1600px_COLOURBOX14889195.jpg",
+    "price": 129.99,
+    "totalClassesTaken": 6,
+    "availableSeats": 3,
+    "email": "michael.davis@example.com"
+  },
+  {
+    "className": "Wildlife Photography",
+    "classImage": "https://www.nikon.com.au/media/News/2022-08-19/shannon-wild/cheetah-cubs-shannon-wild-photography-guide-nikon-cameras-lenses-accessories.jpg",
+    "classEnrolled": 18,
+    "instructorName": "Sarah Adams",
+    "instructorImage": "https://img.freepik.com/free-photo/female-fitness-instructor-setting-up-camera-home-teach-online-class_23-2149320135.jpg?w=2000",
+    "price": 179.99,
+    "totalClassesTaken": 10,
+    "availableSeats": 0,
+    "email": "sarah.adams@example.com"
+  },
+  {
+    "className": "Street Photography",
+    "classImage": "https://andrewstuder.com/wp-content/uploads/2020/04/AF3I6586-2-scaled.jpg",
+    "classEnrolled": 22,
+    "instructorName": "Robert Wilson",
+    "instructorImage": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Hans_Blohm_on_footbridge_Pelly_River_Yukon.jpg",
+    "price": 109.99,
+    "totalClassesTaken": 7,
+    "availableSeats": 12,
+    "email": "robert.wilson@example.com"
+  },
+  {
+    "className": "Product Photography",
+    "classImage": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/9f397f125043517.61113d4bc094f.png",
+    "classEnrolled": 16,
+    "instructorName": "Jessica Lee",
+    "instructorImage": "https://images.squarespace-cdn.com/content/v1/571127b455598628154efb9b/1463014605465-UOPS5G11NNINSH7NR0XS/april-random-36583.jpg",
+    "price": 139.99,
+    "totalClassesTaken": 9,
+    "availableSeats": 4,
+    "email": "jessica.lee@example.com"
+  },
+  {
+    "className": "Fashion Photography",
+    "classImage": "https://www.studiomemorylane.com/wp-content/uploads/2019/10/fashion-photography-tips.jpg",
+    "classEnrolled": 12,
+    "instructorName": "Daniel Thompson",
+    "instructorImage": "https://media.licdn.com/dms/image/C5603AQH2pzwwDAiT5Q/profile-displayphoto-shrink_800_800/0/1530976673601?e=2147483647&v=beta&t=_Dj2rqdZV1nCnLfX7foZe4G-z_u7IS442r0m-NELWEc",
+    "price": 159.99,
+    "totalClassesTaken": 11,
+    "availableSeats": 2,
+    "email": "daniel.thompson@example.com"
+  },
+  {
+    "className": "Macro Photography",
+    "classImage": "https://www.adorama.com/alc/wp-content/uploads/2017/08/shutterstock_630297917.jpg",
+    "classEnrolled": 14,
+    "instructorName": "Sophia Brown",
+    "instructorImage": "https://lillianspibeyphotography.com/wp-content/uploads/2018/09/Italy-Trip-1-2019-Web-4518-705x529.jpg",
+    "price": 119.99,
+    "totalClassesTaken": 5,
+    "availableSeats": 6,
+    "email": "sophia.brown@example.com"
+  },
+  {
+    "className": "Black and White Photography",
+    "classImage": "https://d1hjkbq40fs2x4.cloudfront.net/2021-10-18/files/THUMBNAIL_(1).jpg",
+    "classEnrolled": 19,
+    "instructorName": "William Turner",
+    "instructorImage": "https://media.istockphoto.com/id/1210526465/photo/young-man-photographer-taking-pictures-in-a-city.jpg?s=170667a&w=0&k=20&c=mPGTrzRd4ANz1AhYX9iV7bRzKyfMlMzkPxClXtOvPnE=",
+    "price": 129.99,
+    "totalClassesTaken": 8,
+    "availableSeats": 9,
+    "email": "william.turner@example.com"
+  },
+
+  {
+    "className": "Night Photography",
+    "classImage": "https://res.cloudinary.com/hamstech/images/v1617976485/Hamstech%20App/photography-course3-1/photography-course3-1.jpg",
+    "classEnrolled": 17,
+    "instructorName": "Ethan Clark",
+    "instructorImage": "https://st2.depositphotos.com/6571396/9693/i/950/depositphotos_96932432-stock-photo-happy-young-guy-with-big.jpg",
+    "price": 139.99,
+    "totalClassesTaken": 7,
+    "availableSeats": 5,
+    "email": "ethan.clark@example.com"
+  },
+  {
+    "className": "Wedding Photography",
+    "classImage": "https://www.nijolcreative.com/wp-content/uploads/2017/01/Wedding-Photography-min.jpg",
+    "classEnrolled": 24,
+    "instructorName": "Olivia Martinez",
+    "instructorImage": "https://thumbs.dreamstime.com/b/smiling-young-woman-standing-camera-city-street-photography-lessons-stock-photo-160855380.jpg",
+    "price": 189.99,
+    "totalClassesTaken": 13,
+    "availableSeats": 0,
+    "email": "olivia.martinez@example.com"
+  },
+  {
+    "className": "Travel Photography",
+    "classImage": "https://www.stoodnt.com/blog/wp-content/uploads/2020/06/travel-photographer-careers.jpg",
+    "classEnrolled": 21,
+    "instructorName": "Ava Mitchell",
+    "instructorImage": "https://www.venusconcept.com/images/How-to-Take-Proper-Before-and-After-Pictures.jpg",
+    "price": 149.99,
+    "totalClassesTaken": 9,
+    "availableSeats": 8,
+    "email": "ava.mitchell@example.com"
+  },
+  {
+    "className": "Fine Art Photography",
+    "classImage": "https://static.wixstatic.com/media/4674af_11961e5e1172462191da5c81337d8f91~mv2.jpg/v1/fill/w_1409,h_1047,al_c/4674af_11961e5e1172462191da5c81337d8f91~mv2.jpg",
+    "classEnrolled": 13,
+    "instructorName": "Benjamin Davis",
+    "instructorImage": "https://images.squarespace-cdn.com/content/v1/5013f4b2c4aaa4752ac69b17/1d534f3e-53b6-4c6a-ad7d-e914d3527c2f/_-3.jpg",
+    "price": 169.99,
+    "totalClassesTaken": 10,
+    "availableSeats": 4,
+    "email": "benjamin.davis@example.com"
+  },
+  {
+    "className": "Architectural Photography",
+    "classImage": "https://images.squarespace-cdn.com/content/v1/54f7e29ae4b07717be3c4ddf/1609806758898-WRMSHQMDDNECDVT76BFO/Los+Angeles+Architectural+Photographer?format=1000w",
+    "classEnrolled": 11,
+    "instructorName": "Natalie Garcia",
+    "instructorImage": "https://us.123rf.com/450wm/volody10/volody102103/volody10210300440/166256031-young-happy-girl-takin-pictures-with-digital-camera-work-people-hobby-lifestyle-technology.jpg?ver=6",
+    "price": 149.99,
+    "totalClassesTaken": 6,
+    "availableSeats": 7,
+    "email": "natali34@gmail.com"
+  },
+  {
+    "className": "Sports Photography",
+    "classImage": "https://amateurphotographer.com/wp-content/uploads/sites/7/2022/05/credit-John-Lamb-GettyImages-497811221-1000.jpg",
+    "classEnrolled": 16,
+    "instructorName": "Ryan Evans",
+    "instructorImage": "https://weareguides.com/upload/avatar/20200916094554_3164.jpg",
+    "price": 119.99,
+    "totalClassesTaken": 8,
+    "availableSeats": 5,
+    "email": "ryan.evans@example.com"
+  },
+  {
+    "className": "Photo Editing and Post-Processing",
+    "classImage": "https://digitalmarketingtrends.in/wp-content/uploads/2022/06/Filmmaking-Process.jpg",
+    "classEnrolled": 23,
+    "instructorName": "Isabella Thompson",
+    "instructorImage": "https://mostlylisa.com/wp-content/uploads/2017/01/lisabettanyforblog-1-1080x720.jpg",
+    "price": 99.99,
+    "totalClassesTaken": 12,
+    "availableSeats": 0,
+    "email": "isabella.thompson@example.com"
+  }
+]
