@@ -18,7 +18,7 @@ const Home = () => {
         </h1>
         <PopularInstructorsSection></PopularInstructorsSection>
         <h1 className="text-4xl md:text-6xl font-bold  mt-36 mb-10">
-          Our top Instructors
+          Our top Available Products 
         </h1>
         <Products></Products>
       </div>
