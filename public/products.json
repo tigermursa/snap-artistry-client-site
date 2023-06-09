@@ -1,0 +1,56 @@
+[
+  {
+    "image": "https://www.computervillage.com.bd/uploads/products/photos/item_Nikon-D850-__1627229391.jpg",
+    "productName": "Nikon D850 DSLR Camera",
+    "brand": "Nikon",
+    "aboutProduct": "The Nikon D850 DSLR camera offers high-resolution imaging and impressive speed. It is a versatile camera suitable for various photography genres.",
+    "rating": 4.5,
+    "sold": 100,
+    "price": 1999.99
+  },
+  {
+    "image": "https://www.cliftoncameras.co.uk/uploads/products/canoneosr6productimagesfront.jpg",
+    "productName": "Canon EOS R6 Mirrorless Camera",
+    "brand": "Canon",
+    "aboutProduct": "The Canon EOS R6 is a powerful mirrorless camera that combines high-resolution imaging, advanced autofocus, and 4K video capabilities.",
+    "rating": 4.0,
+    "sold": 75,
+    "price": 2499.99
+  },
+  {
+    "image": "data:image/jpeg;base64,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",
+    "productName": "Manfrotto Tripod",
+    "brand": "Manfrotto",
+    "aboutProduct": "The Manfrotto Tripod is a reliable and sturdy support system for cameras. It offers stability and flexibility for capturing sharp and steady shots.",
+    "rating": 5,
+    "sold": 50,
+    "price": 129.99
+  },
+  {
+    "image": "https://www.camerapricebd.com/wp-content/uploads/2019/08/Sony-Alpha-A7-II-735x400.jpg",
+    "productName": "Sony Alpha a7 III Mirrorless Camera",
+    "brand": "Sony",
+    "aboutProduct": "The Sony Alpha a7 III is a full-frame mirrorless camera known for its exceptional low-light performance, impressive autofocus, and high-quality image output.",
+    "rating": 3.5,
+    "sold": 200,
+    "price": 2199.99
+  },
+  {
+    "image": "https://fujaelelectronics.com/wp-content/uploads/2022/12/Untitled-design-2-1.jpg",
+    "productName": "SanDisk Extreme Pro SD Card",
+    "brand": "SanDisk",
+    "aboutProduct": "The SanDisk Extreme Pro SD Card offers fast and reliable storage for your camera. It provides high-speed data transfer and ample capacity for capturing and storing your photos and videos.",
+    "rating": 4.3,
+    "sold": 60,
+    "price": 49.99
+  },
+  {
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1HtFGAFtydi_0nkp7UzZkK45TKyK5UlXoDA&usqp=CAU",
+    "productName": "Fujifilm X-T4 Mirrorless Camera",
+    "brand": "Fujifilm",
+    "aboutProduct": "The Fujifilm X-T4 is a feature-packed mirrorless camera designed for professional photographers. It offers exceptional image quality, advanced video capabilities, and robust performance.",
+    "rating": 4.5,
+    "sold": 150,
+    "price": 1799.99
+  }
+]

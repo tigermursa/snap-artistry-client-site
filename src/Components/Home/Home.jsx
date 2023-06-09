@@ -2,6 +2,7 @@ import React from "react";
 import HomeSlider from "./HomeSlider/HomeSlider";
 import PopularInstructorsSection from "./PopularInstructorsSection/PopularInstructorsSection";
 import TopSixClass from "./TopSixClass/TopSixClass";
+import Products from "./Products/Products";
 
 const Home = () => {
   return (
@@ -16,6 +17,10 @@ const Home = () => {
           Our top Instructors
         </h1>
         <PopularInstructorsSection></PopularInstructorsSection>
+        <h1 className="text-4xl md:text-6xl font-bold  mt-36 mb-10">
+          Our top Instructors
+        </h1>
+        <Products></Products>
       </div>
     </div>
   );
