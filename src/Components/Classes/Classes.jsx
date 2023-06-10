@@ -43,9 +43,15 @@ const Classes = () => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: "Food added on the cart.",
+              title: "Class added to your list.",
               showConfirmButton: false,
               timer: 1500,
+            });
+          } else {
+            Swal.fire({
+              icon: "info",
+              title: "Oops...",
+              text: "This class is already in your selected list!",
             });
           }
         });

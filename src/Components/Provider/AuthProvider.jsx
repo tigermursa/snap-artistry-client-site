@@ -10,15 +10,14 @@ import {
 } from "firebase/auth";
 import app from "../../Firebase/FirebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
+import axios from "axios";
 export const AuthContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  // ===================================================================================================================================================================+
-  // This code is for image uploading  and set userName
-  // =================================================================================================================================================================+
+  // image uploading code and set user code.............
   const auth = getAuth(app);
   const createUser = (email, password, username, photoURL) => {
     setLoading(true);
@@ -44,9 +43,7 @@ const AuthProvider = ({ children }) => {
         console.log(error);
       });
   };
-  // ===================================================================================================================================================================+
-  //  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ This code is for image uploading  and set userName ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  // =================================================================================================================================================================+
+
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -61,11 +58,23 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  // observing here logOut ( chatGpt theke aro jante hobe )
+  // observing here logOut ( added jwt )
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (myUsers) => {
       setUser(myUsers);
-      setLoading(false);
+
+      // token url and axios using
+      if (myUsers) {
+        axios
+          .post("http://localhost:3000/jwt", { email: myUsers.email })
+          .then((data) => {
+            console.log(data.data.token);
+            localStorage.setItem("access-token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+      }
     });
     return () => {
       unSub();

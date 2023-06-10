@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import {
   FaShoppingCart,
@@ -13,22 +14,52 @@ import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const [isSmallScreen, setSmallScreen] = useState(false);
 
-  // TODO: load data from the server to have dynamic isAdmin based on Data
-  // const isAdmin = true;
+  useEffect(() => {
+    const handleResize = () => {
+      setSmallScreen(window.innerWidth <= 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    setDrawerOpen(!isSmallScreen);
+  }, [isSmallScreen]);
+
+  const toggleDrawer = () => {
+    setDrawerOpen(!isDrawerOpen);
+  };
+
+  // const isAdmin = false; // TODO: Load data from the server to have dynamic isAdmin based on Data
   const [isAdmin] = useAdmin();
 
   return (
-    <div className="drawer drawer-mobile ">
-      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+    <div className={`drawer ${isDrawerOpen ? "drawer-open" : ""}`}>
+      <input
+        id="my-drawer-2"
+        type="checkbox"
+        className="drawer-toggle"
+        checked={isDrawerOpen}
+        onChange={toggleDrawer}
+      />
       <div className="drawer-content flex flex-col items-center justify-center">
-        <Outlet></Outlet>
-        <label
-          htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden"
-        >
-          Open drawer
-        </label>
+        <Outlet />
+        {isSmallScreen && (
+          <label
+            htmlFor="my-drawer-2"
+            className="btn btn-primary drawer-button lg:hidden"
+          >
+            Open drawer
+          </label>
+        )}
       </div>
       <div className="drawer-side bg-[#D1A054]">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -37,28 +68,27 @@ const Dashboard = () => {
             <>
               <li>
                 <NavLink className="text-black" to="/dashboard/home">
-                  <FaHome></FaHome> Admin Home
+                  <FaHome /> Admin Home
                 </NavLink>
               </li>
               <li>
                 <NavLink className="text-black" to="/dashboard/addItem">
-                  {" "}
-                  <FaUtensils></FaUtensils> Add Items
+                  <FaUtensils /> Add Items
                 </NavLink>
               </li>
               <li>
                 <NavLink className="text-black" to="/dashboard/manageitems">
-                  <FaWallet></FaWallet> Manage Items
+                  <FaWallet /> Manage Items
                 </NavLink>
               </li>
               <li>
                 <NavLink className="text-black" to="/dashboard/history">
-                  <FaBook></FaBook> Manage Bookings
+                  <FaBook /> Manage Bookings
                 </NavLink>
               </li>
               <li>
-                <NavLink className="text-black" to="/dashboard/allusers">
-                  <FaUsers></FaUsers> All Users
+                <NavLink className="text-black" to="/dashboards/users">
+                  <FaUsers /> All Users
                 </NavLink>
               </li>
             </>
@@ -66,23 +96,23 @@ const Dashboard = () => {
             <>
               <li>
                 <NavLink className="text-black" to="/dashboard/home">
-                  <FaHome></FaHome> User Home
+                  <FaHome /> User Home
                 </NavLink>
               </li>
               <li>
                 <NavLink className="text-black" to="/dashboard/reservations">
-                  <FaCalendarAlt></FaCalendarAlt> Reservations
+                  <FaCalendarAlt /> Reservations
                 </NavLink>
               </li>
               <li>
                 <NavLink className="text-black" to="/dashboard/history">
-                  <FaWallet></FaWallet> Payment History
+                  <FaWallet /> Payment History
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboards/mycart">
-                  <FaShoppingCart></FaShoppingCart> My Cart
-                  <span className="badge inl badge-secondary">
+                  <FaShoppingCart /> My Cart
+                  <span className="badge inline badge-secondary">
                     +{cart?.length || 0}
                   </span>
                 </NavLink>
@@ -90,15 +120,14 @@ const Dashboard = () => {
             </>
           )}
 
-          <div className="divider"></div>
+          <div className="divider" />
           <li>
             <NavLink className="text-black" to="/">
-              <FaHome></FaHome> Home
+              <FaHome /> Home
             </NavLink>{" "}
           </li>
           <li>
             <NavLink className="text-black" to="/menu">
-              {" "}
               Our Menu
             </NavLink>
           </li>

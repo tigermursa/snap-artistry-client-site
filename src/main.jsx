@@ -14,6 +14,9 @@ import Classes from "./Components/Classes/Classes.jsx";
 import Dashboard from "./Components/Layout/Dashboard.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import MyCart from "./Components/Layout/MyCart/MyCart.jsx";
+import AllUsers from "./Components/Layout/AllUsers/AllUsers.jsx";
+import AdminRoute from "./Components/Private/AdminRoute.jsx";
+import PrivateRoute from "./Components/Private/PrivateRoute.jsx";
 
 const queryClient = new QueryClient();
 
@@ -50,14 +53,25 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboards",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboards/mycart",
         element: <MyCart></MyCart>,
       },
-      
-    ]
+      {
+        path: "/dashboards/users",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+    ],
   },
 ]);
 

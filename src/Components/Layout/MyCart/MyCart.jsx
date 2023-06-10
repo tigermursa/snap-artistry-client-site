@@ -50,7 +50,7 @@ const MyCart = () => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Food</th>
+              <th>Image</th>
               <th>Item Name</th>
               <th>Price</th>
               <th>Action</th>
@@ -62,7 +62,7 @@ const MyCart = () => {
                 <td>{index + 1}</td>
                 <td>
                   <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
+                    <div className="mask-squircle mask w-12 h-12">
                       <img
                         src={item.classImage}
                         alt="Avatar Tailwind CSS Component"
@@ -70,8 +70,8 @@ const MyCart = () => {
                     </div>
                   </div>
                 </td>
-                <td>{item.name}</td>
-                <td className="text-end">${item.price}</td>
+                <td>{item.className}</td>
+                <td className="">${item.price}</td>
                 <td>
                   <button
                     onClick={() => handleDelete(item)}

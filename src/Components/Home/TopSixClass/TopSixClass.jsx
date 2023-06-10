@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const TopSixClass = () => {
   const [data, setData] = useState([]);
@@ -44,20 +45,15 @@ const TopSixClass = () => {
                   Price: ${instructor.price}
                 </p>
               </div>
-              <button
-                className={`mt-7 bg-purple-500 text-white px-4 py-2 rounded-lg ${
-                  instructor.availableSeats === 0
-                    ? "opacity-50 cursor-not-allowed"
-                    : ""
-                }`}
-                disabled={instructor.availableSeats === 0}
-              >
-                Select
-              </button>
             </div>
           ))}
         </div>
       </div>
+      <Link to="/classes">
+        <button className="mt-7 bg-purple-500 text-white px-4 py-2 rounded-lg ">
+          All Classes
+        </button>
+      </Link>
     </div>
   );
 };

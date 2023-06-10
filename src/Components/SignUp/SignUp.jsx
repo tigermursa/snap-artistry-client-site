@@ -6,26 +6,19 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import { storage } from "../../Firebase/FirebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import Swal from "sweetalert2";
 import Spinner from "../Private/Spiner";
-// import useTitle from "../../Hooks/useTitle";
 
 const SignUp = () => {
-  // REDIRECT CODE IS HERE........................................................
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  // ................................................................................
-  // useTitle("Signup");
-  // CONTEXT API HERE..............................................................
   const { createUser, signInGoogle } = useContext(AuthContext);
-  // ..............................................................................
-
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState();
   const [userPhoto, setUserPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
   const [photoUrl, setPhotoUrl] = useState(null);
-  console.log(photoUrl);
 
   const {
     register,
@@ -33,7 +26,6 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  // THE MAIN FUNCTION OF SUBMIT FORM .......................................................
   const onSubmit = async (data) => {
     setLoading(true);
     const { email, password, confirm, username, gender, phone, address } = data;
@@ -60,7 +52,7 @@ const SignUp = () => {
       setLoading(false);
       return;
     }
-    // PHOTO UPLOADING THINGS HERE BE CAREFUL ........................
+
     setLoading(true);
     try {
       const url = await uploadImageToStorage();
@@ -68,6 +60,24 @@ const SignUp = () => {
       setLoading(false);
       navigate(from) || "/login";
       setPhotoUrl(null);
+      const saveUser = {
+        name: data.username,
+        email: data.email,
+        image: url
+      };
+      fetch(`http://localhost:3000/users`, {
+        method: "POSt",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(saveUser),
+      });
+      Swal.fire({
+        title: "Success",
+        text: "User created successfully",
+        icon: "success",
+        position: "top-right",
+      });
     } catch (error) {
       setLoading(false);
       setError("Error occurred!");
@@ -93,6 +103,7 @@ const SignUp = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogleSignIn = () => {
@@ -100,6 +111,18 @@ const SignUp = () => {
       .then((result) => {
         const theUser = result.user;
         console.log(theUser);
+        const saveUser = {
+          name: theUser.displayName,
+          email: theUser.email,
+          image: theUser.photoURL,
+        };
+        fetch(`http://localhost:3000/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        });
         navigate(from) || "/";
       })
       .catch((error) => {
@@ -107,7 +130,6 @@ const SignUp = () => {
       });
   };
 
-  console.log(error);
   return (
     <div className="mt-0">
       {loading ? (

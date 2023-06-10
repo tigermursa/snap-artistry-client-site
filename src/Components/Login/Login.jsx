@@ -12,7 +12,11 @@ const LogIn = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const handleSignInForm = (data) => {
     const { email, password } = data;
@@ -34,7 +38,19 @@ const LogIn = () => {
       .then((result) => {
         const theUser = result.user;
         console.log(theUser);
-        navigate(from);
+        const saveUser = {
+          name: theUser.displayName,
+          email: theUser.email,
+          image: theUser.photoURL,
+        };
+        fetch(`http://localhost:3000/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        });
+        navigate(from) || "/";
       })
       .catch((error) => {
         console.log(error);
@@ -61,7 +77,7 @@ const LogIn = () => {
                 type="text"
                 name="email"
                 {...register("email", {
-                  required: "Email or Phone is required"
+                  required: "Email or Phone is required",
                 })}
                 placeholder="Email or Phone"
               />
@@ -73,7 +89,7 @@ const LogIn = () => {
                 className="pass-key "
                 name="password"
                 {...register("password", {
-                  required: "Password is required"
+                  required: "Password is required",
                 })}
                 placeholder="Password"
               />
@@ -90,7 +106,10 @@ const LogIn = () => {
           </form>
           <div className="login">Or login with</div>
           <div className="links">
-            <button onClick={handleGoogleSignIn} className="google rounded-full">
+            <button
+              onClick={handleGoogleSignIn}
+              className="google rounded-full"
+            >
               <FaGoogle className="me-1"></FaGoogle>
               <span>Google</span>
             </button>
