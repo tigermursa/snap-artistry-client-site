@@ -4,7 +4,7 @@ const TopSixClass = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:3000/classes")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
@@ -24,8 +24,8 @@ const TopSixClass = () => {
           {slicedData.map((instructor, index) => (
             <div
               key={index}
-              className={`bg-white shadow-md rounded-lg p-4 ${
-                instructor.availableSeats === 0 ? "bg-red-600" : "text-black"
+              className={`shadow-md rounded-lg p-4 ${
+                instructor.availableSeats === 0 ? "bg-red-600" : "bg-white"
               }`}
             >
               <img
@@ -33,21 +33,14 @@ const TopSixClass = () => {
                 alt={instructor.classImage}
                 className="w-full h-80 object-cover rounded-lg"
               />
-              <div
-                className={`mt-4 text-start ms-2 ${
-                  instructor.availableSeats === 0 ? "text-white" : "text-black"
-                }`}
-              >
+              <div className="mt-4 text-start ms-2">
                 <p className="text-2xl font-semibold mb-3">
                   {instructor.className}
                 </p>
-                <p className="text-black-500 text-xl">
-                  Instructor: {instructor.instructorName}
-                </p>
-                <p className="text-black-500 text-xl">
-                  Available Seats: {instructor.availableSeats}
-                </p>
-                <p className="text-black-500 font-bold mt-2 text-2xl">
+                <p>Instructor: {instructor.instructorName}</p>
+                <p>Students: {instructor.classEnrolled}</p>
+                <p>Available Seats: {instructor.availableSeats}</p>
+                <p className="font-bold mt-2 text-2xl">
                   Price: ${instructor.price}
                 </p>
               </div>

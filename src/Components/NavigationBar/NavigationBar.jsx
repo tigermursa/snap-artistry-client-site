@@ -3,7 +3,9 @@ import { NavLink, useLocation } from "react-router-dom";
 import "./NavigationBar.css";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaUserAlt } from "react-icons/fa";
-const NavigationBar = ({button}) => {
+import useCart from "../../hooks/useCart";
+const NavigationBar = ({ button }) => {
+  const [cart] = useCart();
   const [activeItem, setActiveItem] = useState(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { signOutUser, user } = useContext(AuthContext);
@@ -31,7 +33,6 @@ const NavigationBar = ({button}) => {
             <NavLink to="/">
               {" "}
               <div className="flex-shrink-0 flex  ">
-             
                 <img
                   className="w-8  rounded-full me-2"
                   src="https://e0.pxfuel.com/wallpapers/590/423/desktop-wallpaper-lens-transparent-background-camera-lens-logo-design-png.jpg"
@@ -40,10 +41,9 @@ const NavigationBar = ({button}) => {
                 <p className="text-2xl font-bold text-white"> Snap Artistry</p>
               </div>
             </NavLink>
-           
           </div>
           <div className="flex items-center">
-          <div className="hidden md:flex md:items-center ml-4">
+            <div className="hidden md:flex md:items-center ml-4">
               <NavLink
                 exact="true"
                 to="/"
@@ -54,6 +54,7 @@ const NavigationBar = ({button}) => {
               >
                 Home
               </NavLink>
+
               <NavLink
                 to="/instructors"
                 onClick={() => handleItemClick("instructors")}
@@ -105,6 +106,15 @@ const NavigationBar = ({button}) => {
                 }`}
               >
                 404
+              </NavLink>
+              <NavLink className="me-10">
+                {" "}
+                <a className=" gap-2">
+                 
+                  <div className="badge badge-secondary">
+                    {cart?.length || 0}
+                  </div>
+                </a>
               </NavLink>
             </div>
             <div className="hidden md:block">

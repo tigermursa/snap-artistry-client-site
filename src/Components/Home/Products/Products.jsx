@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import "./Products.css"
 const Products = () => {
   const [products, setProducts] = useState([]);
 
@@ -11,29 +11,12 @@ const Products = () => {
 
   const renderStars = (rating) => {
     const filledStars = Math.floor(rating);
-    const hasHalfStar = rating - filledStars >= 0.5;
-
     const stars = [];
+
     for (let i = 0; i < filledStars; i++) {
       stars.push(
-        <span key={i} className="text-yellow-500 text-2xl">
+        <span key={i} className="text-yellow-500 text-2xl pulsate">
           &#9733;
-        </span>
-      );
-    }
-
-    if (hasHalfStar) {
-      stars.push(
-        <span key="half" className="text-yellow-500 text-2xl">
-          &#189;
-        </span>
-      );
-    }
-
-    for (let i = stars.length; i < 5; i++) {
-      stars.push(
-        <span key={i} className="text-yellow-500 text-2xl">
-          &#9734;
         </span>
       );
     }

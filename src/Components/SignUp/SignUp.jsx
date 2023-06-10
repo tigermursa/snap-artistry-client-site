@@ -155,7 +155,7 @@ const SignUp = () => {
                   <span className="text-red-600">Email is required</span>
                 )}
               </div>
-              <div className="field rounded-full">
+              <div className="field rounded-full mt-4">
                 <span className="fa fa-user"></span>
                 <input
                   type="text"
@@ -168,7 +168,7 @@ const SignUp = () => {
                   <span className="text-red-600">Gender is required</span>
                 )}
               </div>
-              <div className="field rounded-full">
+              <div className="field rounded-full  mt-4">
                 <span className="fa fa-user"></span>
                 <input
                   type="text"
@@ -181,7 +181,7 @@ const SignUp = () => {
                   <span className="text-red-600">Phone Number is required</span>
                 )}
               </div>
-              <div className="field rounded-full">
+              <div className="field rounded-full  mt-4">
                 <span className="fa fa-user"></span>
                 <input
                   type="text"

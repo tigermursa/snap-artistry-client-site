@@ -11,7 +11,11 @@ import AuthProvider from "./Components/Provider/AuthProvider.jsx";
 import SignUp from "./Components/SignUp/SignUp.jsx";
 import Instructors from "./Components/Instructors/Instructors.jsx";
 import Classes from "./Components/Classes/Classes.jsx";
-import Dashboard from "./Components/Dashboard/Dashboard.jsx";
+import Dashboard from "./Components/Layout/Dashboard.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import MyCart from "./Components/Layout/MyCart/MyCart.jsx";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -38,22 +42,33 @@ const router = createBrowserRouter([
         path: "/classes",
         element: <Classes />,
       },
-      {
-        path: "/dashboards",
-        element: <Dashboard></Dashboard>,
-      },
     ],
   },
   {
     path: "/*",
     element: <FourOhFour></FourOhFour>,
   },
+  {
+    path: "/dashboards",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "/dashboards/mycart",
+        element: <MyCart></MyCart>,
+      },
+      
+    ]
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <div className="max-w-screen-xl mx-auto">
+          <RouterProvider router={router} />
+        </div>
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>
 );
