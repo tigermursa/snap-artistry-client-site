@@ -16,6 +16,7 @@ const LogIn = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm();
 
   const handleSignInForm = (data) => {
@@ -28,6 +29,10 @@ const LogIn = () => {
       })
       .catch((error) => {
         console.log(error);
+        setError("auth", {
+          type: "manual",
+          message: "Invalid email or password",
+        });
       });
   };
 
@@ -67,9 +72,9 @@ const LogIn = () => {
       <div className="bg-img">
         <div className="content rounded-xl">
           <header>Login Form</header>
-          <h1 className="text-red-600 font-bold mb-10 text-2xl ">
-            {errors.email?.message || errors.password?.message}
-          </h1>
+          {errors.auth && (
+            <p className="text-red-600 font-bold mb-4">{errors.auth.message}</p>
+          )}
           <form onSubmit={handleSubmit(handleSignInForm)}>
             <div className="field rounded-full">
               <span className="fa fa-user"></span>

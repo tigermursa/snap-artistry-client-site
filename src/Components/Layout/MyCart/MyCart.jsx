@@ -5,9 +5,8 @@ import Swal from "sweetalert2";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
-  console.log(cart);
-  // how does reduce work!!!
-  const total = cart.reduce((sum, item) => item.price + sum, 0);
+  //  using reduce to show total price
+  const total = cart.reduce((sum, item) => item.price + sum, 0).toFixed(2);
 
   const handleDelete = (item) => {
     Swal.fire({
@@ -39,16 +38,16 @@ const MyCart = () => {
       {/* <Helmet>
                 <title>Bistro Boss | My Cart</title>
             </Helmet> */}
-      <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
-        <h3 className="text-3xl">Total Items: {cart.length}</h3>
-        <h3 className="text-3xl">Total Price: ${total}</h3>
-        <button className="btn btn-warning btn-sm">PAY</button>
+      <div className="uppercase font-semibold h-[50px] flex justify-evenly items-center mb-10">
+        <h3 className="text-3xl">Total Items : {cart.length}</h3>
+        <h3 className="text-3xl">Total Price : ${total}</h3>
+        <button className="btn bg-green-600 text-zinc-50 btn-md">PAY</button>
       </div>
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full ">
         <table className="table w-full">
           {/* head */}
-          <thead>
-            <tr>
+          <thead className="text-xl text-white">
+            <tr >
               <th>#</th>
               <th>Image</th>
               <th>Item Name</th>
@@ -70,12 +69,12 @@ const MyCart = () => {
                     </div>
                   </div>
                 </td>
-                <td>{item.className}</td>
-                <td className="">${item.price}</td>
+                <td className="text-white">{item.className}</td>
+                <td className="text-white">${item.price}</td>
                 <td>
                   <button
                     onClick={() => handleDelete(item)}
-                    className="btn btn-ghost bg-red-600  text-white"
+                    className="btn  bg-purple-950 hover:bg-red-700  rounded-full text-white"
                   >
                     <FaTrashAlt></FaTrashAlt>
                   </button>

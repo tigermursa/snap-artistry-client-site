@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import "./NavigationBar.css";
 import { AuthContext } from "../Provider/AuthProvider";
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserAlt,FaRegFolder } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
 const NavigationBar = ({ button }) => {
   const [cart] = useCart();
@@ -108,13 +108,14 @@ const NavigationBar = ({ button }) => {
                 404
               </NavLink>
               <NavLink className="me-10">
-                {" "}
-                <a className=" gap-2">
-                 
+                <div className=" gap-2 flex">
+                
                   <div className="badge badge-secondary">
+                    <span className="me-2 text-lg"><FaRegFolder/></span>
                     {cart?.length || 0}
                   </div>
-                </a>
+                  
+                </div>
               </NavLink>
             </div>
             <div className="hidden md:block">

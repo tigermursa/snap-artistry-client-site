@@ -63,7 +63,7 @@ const SignUp = () => {
       const saveUser = {
         name: data.username,
         email: data.email,
-        image: url
+        image: url,
       };
       fetch(`http://localhost:3000/users`, {
         method: "POSt",
@@ -73,10 +73,9 @@ const SignUp = () => {
         body: JSON.stringify(saveUser),
       });
       Swal.fire({
-        title: "Success",
-        text: "User created successfully",
+        title: "Great",
+        text: " User  account  created successfully!",
         icon: "success",
-        position: "top-right",
       });
     } catch (error) {
       setLoading(false);

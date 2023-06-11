@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 // import { Helmet } from "react-helmet-async";
-import { FaTrashAlt, FaUserShield } from "react-icons/fa";
+import { FaTrashAlt, FaShieldAlt, FaUserLock } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
@@ -24,6 +24,25 @@ const AllUsers = () => {
             position: "top-end",
             icon: "success",
             title: `${user.name} is an Admin Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+  const handleMakeInstructor = (user) => {
+    fetch(`http://localhost:3000/users/instructor/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an instructor now!`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -74,19 +93,20 @@ const AllUsers = () => {
       {/* <Helmet>
         <title>Bistro Boss | All users</title>
       </Helmet> */}
-      <h3 className="text-3xl font-semibold my-4">
-        Total Users: {users.length}
+      <h3 className="text-3xl font-semibold my-4 text-white">
+        Current Users: {users.length}
       </h3>
       <div className="overflow-x-auto ">
-        <table className="table table-zebra w-full ">
+        <table className="table table-zebra w-full text-white ">
           {/* head */}
-          <thead>
+          <thead className="text-white text-lg">
             <tr>
               <th>#</th>
               <th>Image</th>
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
+              <th>Role 2</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -95,29 +115,51 @@ const AllUsers = () => {
               <tr key={user._id}>
                 <th>{index + 1}</th>
                 <div>
-                  <div className="w-12 h-12 mt-3">
-                    <img className="rounded-full" src={user.image} />
+                  <div className="">
+                    <img
+                      className=" rounded-full w-12 h-12 mt-3 object-cover"
+                      src={user.image}
+                    />
                   </div>
                 </div>
 
-                <td>{user.name}</td>
+                <td className="text-white">{user.name}</td>
                 <td>{user.email}</td>
                 <td>
                   {user.role === "admin" ? (
-                    "admin"
+                    <button className="btn hover:bg-green-700 bg-green-700 rounded-full  text-white">
+                      <FaShieldAlt></FaShieldAlt>
+                    </button>
                   ) : (
                     <button
+                      title="Make admin"
                       onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-ghost bg-orange-600  text-white"
+                      className="btn hover:bg-green-700 bg-purple-900 rounded-full  text-white"
                     >
-                      <FaUserShield></FaUserShield>
+                      <FaShieldAlt></FaShieldAlt>
+                    </button>
+                  )}
+                </td>
+                <td>
+                  {user.role === "instructor" ? (
+                    <button className="btn hover:bg-green-700 bg-green-700 rounded-full  text-white">
+                      <FaUserLock />
+                    </button>
+                  ) : (
+                    <button
+                      title="Make instructor"
+                      onClick={() => handleMakeInstructor(user)}
+                      className="btn hover:bg-green-700 bg-purple-900 rounded-full  text-white"
+                    >
+                      <FaUserLock />
                     </button>
                   )}
                 </td>
                 <td>
                   <button
+                    title="delete user"
                     onClick={() => handleDelete(user)}
-                    className="btn btn-ghost bg-red-600  text-white"
+                    className="btn  bg-purple-950 hover:bg-red-700  rounded-full text-white"
                   >
                     <FaTrashAlt></FaTrashAlt>
                   </button>

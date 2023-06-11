@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Products.css"
+import "./Products.css";
 const Products = () => {
   const [products, setProducts] = useState([]);
 
@@ -28,7 +28,10 @@ const Products = () => {
     const isHotProduct = product.price >= 2000;
 
     return (
-      <div key={product.id} className="bg-white p-4 shadow-md rounded-lg relative">
+      <div
+        key={product.id}
+        className="bg-white p-4 shadow-md rounded-lg relative"
+      >
         {isHotProduct && (
           <span className="absolute top-0 right-0 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-bl">
             Hot Product
@@ -40,12 +43,20 @@ const Products = () => {
           className="w-full h-60 object-scale-down rounded-lg"
         />
         <div className="mt-4">
-          <p className="text-lg font-semibold text-black">{product.productName}</p>
-          <p className="text-lime-600 text-xl font-semibold mt-1 mb-2">{product.brand}</p>
+          <p className="text-lg font-semibold text-black">
+            {product.productName}
+          </p>
+          <p className="text-lime-600 text-xl font-semibold mt-1 mb-2">
+            {product.brand}
+          </p>
           <p className="text-black text-justify">{product.aboutProduct}</p>
-          <div className="flex items-center justify-center mt-2">{renderStars(product.rating)}</div>
+          <div className="flex items-center justify-center mt-2">
+            {renderStars(product.rating)}
+          </div>
           <p className="text-black font-bold mt-2">Sold: {product.sold}</p>
-          <p className="text-black font-bold text-2xl mt-2 mb-3">Price: ${product.price}</p>
+          <p className="text-black font-bold text-2xl mt-2 mb-3">
+            Price: ${product.price}
+          </p>
           <button className="mt-4 bg-purple-500 text-white px-4 py-2 rounded-lg">
             Add to Cart &#128722;
           </button>

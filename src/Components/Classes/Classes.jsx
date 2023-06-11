@@ -41,11 +41,11 @@ const Classes = () => {
           if (data.insertedId) {
             refetch();
             Swal.fire({
-              position: "top-end",
+              position: "top-start",
               icon: "success",
               title: "Class added to your list.",
               showConfirmButton: false,
-              timer: 1500,
+              timer: 2500,
             });
           } else {
             Swal.fire({
