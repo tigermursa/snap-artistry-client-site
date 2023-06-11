@@ -12,7 +12,7 @@ const AddClass = () => {
     formState: { errors },
   } = useForm();
   console.log(user);
-  const onSubmit = (data) => {
+  const onSubmit = (data,e) => {
     axios
       .post("http://localhost:3000/classes", data)
       .then((response) => {
@@ -22,6 +22,7 @@ const AddClass = () => {
           title: "Class Added",
           text: "The class has been successfully added.",
         });
+        e.target.reset();
       })
       .catch((error) => {
         console.log(error);
@@ -35,7 +36,7 @@ const AddClass = () => {
   return (
     <div className="ms-10 mx-auto w-full">
       <h2 className="text-2xl font-bold mb-4">Add Class</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={(e) => handleSubmit(onSubmit)(e)}>
         <div className="flex flex-wrap -mx-4">
           <div className="w-1/2 px-4 mb-4">
             <label className="block mb-2 text-lg font-bold">Class Name:</label>
