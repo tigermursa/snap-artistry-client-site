@@ -15,6 +15,7 @@ import useInstructor from "../../hooks/useInstructor";
 
 import NavigationBar from "../NavigationBar/NavigationBar";
 import Footer from "../Footer/Footer";
+import Spinner from "../Private/Spiner";
 
 const Dashboard = () => {
   const [cart] = useCart();
@@ -42,12 +43,18 @@ const Dashboard = () => {
     setDrawerOpen(!isDrawerOpen);
   };
 
-  // if (isAdminLoading || isInstructorLoading) {
-  //   return <div>Loading...</div>;
-  // }
-  const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor();
+  const [isAdmin, isAdminLoading] = useAdmin();
+  const [isInstructor, isInstructorLoading] = useInstructor();
 
+  if (isAdminLoading || isInstructorLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-center">
+          <Spinner></Spinner>
+        </div>
+      </div>
+    );
+  }
   return (
     <>
       <NavigationBar />
@@ -83,7 +90,7 @@ const Dashboard = () => {
                   </div>
                 </li>
                 <li>
-                  <NavLink className="text-white" to="/dashboard/addItem">
+                  <NavLink className="text-white" to="/dashboards/addItem">
                     <FaRegEdit /> Manage Classes
                   </NavLink>
                 </li>
@@ -103,7 +110,7 @@ const Dashboard = () => {
               </>
             )}
 
-            {isInstructor && !isAdmin && (
+            {isInstructor && (
               <>
                 <li>
                   <div className="text-white text-2xl font-semibold">
@@ -112,18 +119,19 @@ const Dashboard = () => {
                   </div>
                 </li>
                 <li>
-                  <NavLink className="text-white" to="/dashboard/addclass">
+                  <NavLink className="text-white" to="/dashboards/addclass">
                     <FaCalendarAlt /> Add a Class
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="text-white" to="/dashboard/myclasses">
+                  <NavLink className="text-white" to="/dashboards/myclasses">
                     <FaWallet /> My Classes
                   </NavLink>
                 </li>
                 <li className="">
                   <NavLink to="/dashboards/mycart">
-                    <FaRegFileVideo className="text-lg text-white" /> My Selected Classes
+                    <FaRegFileVideo className="text-lg text-white" /> My
+                    Selected Classes
                     <span className="badge inline badge-secondary ">
                       +{cart?.length || 0}
                     </span>

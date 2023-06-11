@@ -17,8 +17,9 @@ import MyCart from "./Components/Layout/MyCart/MyCart.jsx";
 import AllUsers from "./Components/Layout/AllUsers/AllUsers.jsx";
 import AdminRoute from "./Components/Private/AdminRoute.jsx";
 import PrivateRoute from "./Components/Private/PrivateRoute.jsx";
-import AddClass from "./Components/Instructors/AddClass.jsx";
-import MyClass from "./Components/Instructors/MyClass.jsx";
+import AddClass from "./Components/Layout/AddClass/AddClass.jsx";
+import MyClass from "./Components/Layout/MyClass/MyClass.jsx";
+import UpdateClass from "./Components/Instructors/UpdateClass.jsx";
 
 const queryClient = new QueryClient();
 
@@ -43,13 +44,12 @@ const router = createBrowserRouter([
         path: "/instructors",
         element: <Instructors></Instructors>,
       },
+
       {
-        path: "/dashboard/addclass",
-        element: <AddClass></AddClass>,
-      },
-      {
-        path: "/dashboard/myclasses",
-        element: <MyClass></MyClass>,
+        path: "/dashboard/update/:id",
+        element: <UpdateClass></UpdateClass>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/classes/${params.id}`),
       },
       {
         path: "/classes",
@@ -72,6 +72,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboards/mycart",
         element: <MyCart></MyCart>,
+      },
+      {
+        path: "/dashboards/addclass",
+        element: <AddClass></AddClass>,
+      },
+      {
+        path: "/dashboards/myclasses",
+        element: <MyClass></MyClass>,
       },
       {
         path: "/dashboards/users",

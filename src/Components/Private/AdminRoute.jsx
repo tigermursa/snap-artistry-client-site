@@ -4,7 +4,6 @@ import Spinner from "./Spiner";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
-
 const AdminRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const [isAdmin, isAdminLoading] = useAdmin();
@@ -17,7 +16,8 @@ const AdminRoute = ({ children }) => {
   if (user && isAdmin) {
     return children;
   }
-  return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+  // TODO: MAKE a route and compo for them who wanted to go through url
+  return <Navigate to="/" state={{ from: location }} replace></Navigate>;
 };
 
 export default AdminRoute;

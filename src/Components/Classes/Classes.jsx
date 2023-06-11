@@ -79,7 +79,7 @@ const Classes = () => {
             <div key={index} className="shadow-md rounded-lg p-4">
               <div
                 className={`${
-                  instructor.availableSeats === 0 ? "bg-red-600" : "bg-white"
+                  instructor.availableSeats == 0 ?  "bg-red-600" : "bg-white"
                 } rounded-lg p-4`}
               >
                 <img

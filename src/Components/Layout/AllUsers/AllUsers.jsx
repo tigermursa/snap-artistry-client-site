@@ -114,14 +114,14 @@ const AllUsers = () => {
             {users.map((user, index) => (
               <tr key={user._id}>
                 <th>{index + 1}</th>
-                <div>
+                <th>
                   <div className="">
                     <img
                       className=" rounded-full w-12 h-12 mt-3 object-cover"
                       src={user.image}
                     />
                   </div>
-                </div>
+                </th>
 
                 <td className="text-white">{user.name}</td>
                 <td>{user.email}</td>
