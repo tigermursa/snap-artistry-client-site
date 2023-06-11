@@ -12,7 +12,7 @@ const AddClass = () => {
     formState: { errors },
   } = useForm();
   console.log(user);
-  const onSubmit = (data,e) => {
+  const onSubmit = (data, e) => {
     axios
       .post("http://localhost:3000/classes", data)
       .then((response) => {
@@ -29,9 +29,10 @@ const AddClass = () => {
       });
   };
 
+  const status = "pending";
   const email = user ? user.email : "";
   const name = user ? user.displayName : "";
-  const image = user ? user.photoURL : "";
+  // const image = user ? user.photoURL : "";
 
   return (
     <div className="ms-10 mx-auto w-full">
@@ -50,7 +51,9 @@ const AddClass = () => {
             )}
           </div>
           <div className="w-1/2 px-4 mb-4">
-            <label className="block mb-2 text-lg font-bold">Class Image( put url)  :</label>
+            <label className="block mb-2 text-lg font-bold">
+              Class Image( put url) :
+            </label>
             <input
               type="text"
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
@@ -59,8 +62,8 @@ const AddClass = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-1/2 px-4 mb-4">
+        <div className="flex flex-wrap -mx-4 ">
+          <div className="w-1/2 px-4 mb-4 hidden">
             <label className="block mb-2 text-lg font-bold">
               Class Enrolled:
             </label>
@@ -68,6 +71,19 @@ const AddClass = () => {
               type="number"
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
               {...register("classEnrolled")}
+              defaultValue={0}
+              readOnly
+            />
+          </div>
+
+          <div className="w-1/2 px-4 mb-4 hidden">
+            <label className="block mb-2 text-lg font-bold">status:</label>
+            <input
+              type="text"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              {...register("status")}
+              defaultValue={status}
+              readOnly
             />
           </div>
           <div className="w-1/2 px-4 mb-4">
@@ -81,19 +97,6 @@ const AddClass = () => {
               defaultValue={name}
             />
           </div>
-        </div>
-
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-1/2 px-4 mb-4">
-            <label className="block mb-2 text-lg font-bold">
-              Total Classes Taken:
-            </label>
-            <input
-              type="number"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md"
-              {...register("totalClassesTaken")}
-            />
-          </div>
           <div className="w-1/2 px-4 mb-4">
             <label className="block mb-2 text-lg font-bold">Price:</label>
             <input
@@ -105,7 +108,20 @@ const AddClass = () => {
           </div>
         </div>
 
-        <div className="mb-4">
+        <div className="flex flex-wrap -mx-4">
+          {/* <div className="w-1/2 px-4 mb-4">
+            <label className="block mb-2 text-lg font-bold">
+              Total Classes Taken:
+            </label>
+            <input
+              type="number"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              {...register("totalClassesTaken")}
+            />
+          </div> */}
+        </div>
+
+        {/* <div className="mb-4">
           <label className="block mb-2 text-lg font-bold">
             Instructor Image:
           </label>
@@ -115,7 +131,7 @@ const AddClass = () => {
             {...register("instructorImage")}
             defaultValue={image}
           />
-        </div>
+        </div> */}
 
         <div className="flex flex-wrap -mx-4 items-center">
           <div className="w-1/2 px-4 mb-4">
@@ -155,15 +171,7 @@ const AddClass = () => {
 
 export default AddClass;
 
-
-
-
-
-
-
-
-
-//  i added img bbf but server was going down so i just using url for now 
+//  i added img bbf but server was going down so i just using url for now
 
 // import React, { useContext } from "react";
 // import { useForm } from "react-hook-form";

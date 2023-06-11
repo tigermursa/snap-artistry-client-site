@@ -70,7 +70,7 @@ const MyClass = () => {
               alt={classItem.classImage}
               className="w-full h-48 object-cover"
             />
-            <div className="p-4">
+            <div className="p-4 text-black text-start">
               <p className="text-xl font-bold mb-2">{classItem.className}</p>
               <p className="text-lg">Instructor: {classItem.instructorName}</p>
               <p className="text-lg">Enrolled: {classItem.classEnrolled}</p>
