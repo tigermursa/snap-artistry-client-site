@@ -11,13 +11,12 @@ const Classes = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/classes")
+    fetch("https://y-tigermursa.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
 
   const handleAddToCart = (data) => {
-    console.log(data);
     if (user && user.email) {
       const cartItem = {
         menuItemId: data._id,
@@ -29,7 +28,7 @@ const Classes = () => {
         price: data.price,
         email: user.email,
       };
-      fetch("http://localhost:3000/cart", {
+      fetch("https://y-tigermursa.vercel.app/cart", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -71,15 +70,17 @@ const Classes = () => {
     }
   };
 
+  const approvedData = data.filter((item) => item.status === "approved");
+
   return (
     <div>
       <div className="container mx-auto px-4 mb-20">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {data.map((instructor, index) => (
+          {approvedData.map((instructor, index) => (
             <div key={index} className="shadow-md rounded-lg p-4">
               <div
                 className={`${
-                  instructor.availableSeats == 0 ?  "bg-red-600" : "bg-white"
+                  instructor.availableSeats === 0 ? "bg-red-600" : "bg-white"
                 } rounded-lg p-4`}
               >
                 <img

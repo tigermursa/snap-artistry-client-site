@@ -3,14 +3,17 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Components/Provider/AuthProvider";
 
+const axiosSecure = axios.create({
+  baseURL: "https://y-tigermursa.vercel.app",
+});
+
+
 const useAxiosSecure = () => {
   const { signOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const axiosSecure = axios.create({
-    baseURL: "http://localhost:3000",
-  });
 
+  
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
       const token = localStorage.getItem("access-token");
@@ -33,7 +36,7 @@ const useAxiosSecure = () => {
         return Promise.reject(error);
       }
     );
-  }, [axiosSecure, signOutUser, navigate]);
+  }, [signOutUser, navigate]);
 
   return [axiosSecure];
 };

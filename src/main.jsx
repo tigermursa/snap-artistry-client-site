@@ -20,6 +20,11 @@ import PrivateRoute from "./Components/Private/PrivateRoute.jsx";
 import AddClass from "./Components/Layout/AddClass/AddClass.jsx";
 import MyClass from "./Components/Layout/MyClass/MyClass.jsx";
 import UpdateClass from "./Components/Instructors/UpdateClass.jsx";
+import InstructorRoute from "./Components/Private/InstructorRoute.jsx";
+import Payment from "./Components/Layout/Payment/Payment.jsx";
+import PaymentHistory from "./Components/Layout/Payment/PaymentHistory.jsx";
+import AllClasses from "./Components/Classes/Allclasses.jsx";
+import MyEnrolledClass from "./Components/Layout/MyEnrolledClass/MyEnrolledClass.jsx";
 
 const queryClient = new QueryClient();
 
@@ -46,10 +51,10 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/dashboard/update/:id",
+        path: "/dashboards/myclasses/update/:id",
         element: <UpdateClass></UpdateClass>,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/classes/${params.id}`),
+          fetch(`https://y-tigermursa.vercel.app/classes/${params.id}`),
       },
       {
         path: "/classes",
@@ -74,6 +79,18 @@ const router = createBrowserRouter([
         element: <MyCart></MyCart>,
       },
       {
+        path: "/dashboards/mycart/student/payment",
+        element: <Payment></Payment>,
+      },
+      {
+        path: "/dashboards/phistory",
+        element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: "/dashboards/enrolled",
+        element: <MyEnrolledClass></MyEnrolledClass>,
+      },
+      {
         path: "/dashboards/addclass",
         element: <AddClass></AddClass>,
       },
@@ -86,6 +103,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboards/allclass",
+        element: (
+          <AdminRoute>
+            <AllClasses></AllClasses>
           </AdminRoute>
         ),
       },

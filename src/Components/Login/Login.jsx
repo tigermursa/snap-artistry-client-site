@@ -16,11 +16,14 @@ const LogIn = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setError,
   } = useForm();
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSignInForm = (data) => {
     const { email, password } = data;
+    setErrorMessage(""); // Clear the error message
+
     signIn(email, password)
       .then((result) => {
         const loggedInUser = result.user;
@@ -29,10 +32,7 @@ const LogIn = () => {
       })
       .catch((error) => {
         console.log(error);
-        setError("auth", {
-          type: "manual",
-          message: "Invalid email or password",
-        });
+        setErrorMessage("Invalid email or password");
       });
   };
 
@@ -48,7 +48,7 @@ const LogIn = () => {
           email: theUser.email,
           image: theUser.photoURL,
         };
-        fetch(`http://localhost:3000/users`, {
+        fetch(`https://y-tigermursa.vercel.app//users`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -72,8 +72,8 @@ const LogIn = () => {
       <div className="bg-img">
         <div className="content rounded-xl">
           <header>Login Form</header>
-          {errors.auth && (
-            <p className="text-red-600 font-bold mb-4">{errors.auth.message}</p>
+          {errorMessage && (
+            <p className="text-red-600 font-bold mb-4">{errorMessage}</p>
           )}
           <form onSubmit={handleSubmit(handleSignInForm)}>
             <div className="field rounded-full">

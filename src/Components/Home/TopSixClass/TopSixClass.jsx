@@ -5,7 +5,7 @@ const TopSixClass = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/classes")
+    fetch("https://y-tigermursa.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

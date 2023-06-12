@@ -14,7 +14,7 @@ const AddClass = () => {
   console.log(user);
   const onSubmit = (data, e) => {
     axios
-      .post("http://localhost:3000/classes", data)
+      .post("https://y-tigermursa.vercel.app/classes", data)
       .then((response) => {
         console.log(response.data);
         Swal.fire({
@@ -229,7 +229,7 @@ export default AddClass;
 //           };
 //           console.log(newClass);
 //           axiosSecure
-//             .post("http://localhost:3000/classes", newClass)
+//             .post("https://y-tigermursa.vercel.app/classes", newClass)
 //             .then((response) => {
 //               console.log(response.data);
 //               reset();

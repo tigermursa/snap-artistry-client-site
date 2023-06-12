@@ -2,12 +2,12 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import cphoto1 from "../../../../public/cphoto1.jpg";
-import cphoto2 from "../../../../public/cphoto2.jpeg";
-import cphoto3 from "../../../../public/cphoto3.jpeg";
-import cphoto4 from "../../../../public/cphoto4.jpeg";
-import cphoto5 from "../../../../public/cphoto5.jpeg";
-import "./HomeSlider.css"
+import cphoto1 from "/cphoto1.jpg";
+import cphoto2 from "/cphoto2.jpeg";
+import cphoto3 from "/cphoto3.jpeg";
+import cphoto4 from "/cphoto4.jpeg";
+import cphoto5 from "/cphoto5.jpeg";
+import "./HomeSlider.css";
 const HomeSlider = () => {
   const settings = {
     dots: " ",

@@ -15,7 +15,7 @@ const UpdateClass = () => {
 
   const onSubmit = (data) => {
     axios
-      .put(`http://localhost:3000/classes/${theLoadedClass._id}`, data)
+      .put(`https://y-tigermursa.vercel.app/classes/${theLoadedClass._id}`, data)
       .then((response) => {
         console.log(response.data);
         Swal.fire({

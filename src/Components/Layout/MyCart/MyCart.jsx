@@ -1,6 +1,7 @@
 // import { Helmet } from "react-helmet-async";
 import useCart from "../../../hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyCart = () => {
@@ -19,7 +20,7 @@ const MyCart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/cart/${item._id}`, {
+        fetch(`https://y-tigermursa.vercel.app/cart/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -41,13 +42,15 @@ const MyCart = () => {
       <div className="uppercase font-semibold h-[50px] flex justify-evenly items-center mb-10">
         <h3 className="text-3xl">Total Items : {cart.length}</h3>
         <h3 className="text-3xl">Total Price : ${total}</h3>
-        <button className="btn bg-green-600 text-zinc-50 btn-md">PAY</button>
+        <Link to="student/payment">
+          <button className="btn bg-green-600 text-zinc-50 btn-md">PAY</button>
+        </Link>
       </div>
       <div className="overflow-x-auto w-full ">
         <table className="table w-full">
-          {/* head */}
+         
           <thead className="text-xl text-white">
-            <tr >
+            <tr>
               <th>#</th>
               <th>Image</th>
               <th>Item Name</th>

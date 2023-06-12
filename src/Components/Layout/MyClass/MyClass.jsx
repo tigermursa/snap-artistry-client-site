@@ -13,7 +13,7 @@ const MyClass = () => {
     const fetchClasses = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/classes/email/${user?.email}`
+          `https://y-tigermursa.vercel.app/classes/email/${user?.email}`
         );
         setClasses(response.data);
       } catch (error) {
@@ -36,7 +36,7 @@ const MyClass = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`http://localhost:3000/classes/${_id}`);
+          await axios.delete(`https://y-tigermursa.vercel.app/classes/${_id}`);
           setClasses((prevClasses) =>
             prevClasses.filter((classItem) => classItem._id !== _id)
           );
@@ -88,7 +88,7 @@ const MyClass = () => {
                   <FaTrash />
                 </button>
                 <Link
-                  to={`/edit-class/${classItem._id}`}
+                  to={`/dashboards/myclasses/update/${classItem._id}`}
                   className="text-blue-500"
                 >
                   <FaEdit />

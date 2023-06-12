@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   FaRegFileVideo,
   FaWallet,
@@ -8,6 +8,7 @@ import {
   FaRegEdit,
   FaBook,
   FaUsers,
+  FaCheck,
 } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
 import useAdmin from "../../hooks/useAdmin";
@@ -45,6 +46,18 @@ const Dashboard = () => {
 
   const [isAdmin, isAdminLoading] = useAdmin();
   const [isInstructor, isInstructorLoading] = useInstructor();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAdmin && !isInstructor) {
+      navigate("/dashboards/mycart");
+    } else if (isAdmin && !isInstructor) {
+      navigate("/dashboards/users");
+    } else if (!isAdmin && isInstructor) {
+      navigate("/dashboards/myclasses");
+    }
+  }, [isAdmin, isInstructor, navigate]);
 
   if (isAdminLoading || isInstructorLoading) {
     return (
@@ -90,7 +103,7 @@ const Dashboard = () => {
                   </div>
                 </li>
                 <li>
-                  <NavLink className="text-white" to="/dashboards/addItem">
+                  <NavLink className="text-white" to="/dashboards/allclass">
                     <FaRegEdit /> Manage Classes
                   </NavLink>
                 </li>
@@ -162,8 +175,13 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="text-white" to="/dashboard/history">
+                  <NavLink className="text-white" to="/dashboards/phistory">
                     <FaWallet /> Payment History
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="text-white" to="/dashboards/enrolled">
+                    <FaCheck /> My Enrolled Classes
                   </NavLink>
                 </li>
               </>
